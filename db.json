@@ -1,0 +1,92 @@
+{
+  "requests": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "country": "Kenya",
+      "phone": "0712345678",
+      "location": "Nairobi West",
+      "system": "Domestic Borehole System"
+    },
+    {
+      "id": 2,
+      "name": "Denzel Pascal",
+      "email": "pascaldenzel7@gmail.com",
+      "country": "Kenya",
+      "phone": "0791240033",
+      "location": "NAIROBI",
+      "system": "Irrigation Borehole System"
+    },
+    {
+      "id": 3,
+      "name": "Solomon Kitonyi",
+      "email": "solomon@example.com",
+      "country": "Kenya",
+      "phone": "0700000000",
+      "location": "Machakos",
+      "system": "Commercial Borehole System"
+    },
+    {
+      "name": "Zulekha Lydia",
+      "email": "zulekha@example.com",
+      "country": "Uganda",
+      "phone": "0717171542",
+      "location": "Kampala",
+      "system": "Domestic Borehole System",
+      "id": 4
+    },
+    {
+      "name": "Peter Evans",
+      "email": "peter.evans@email.com",
+      "country": "Tanzania",
+      "phone": "0720893218",
+      "location": "Mwanza",
+      "system": "Irrigation Borehole System",
+      "id": 5
+    },
+    {
+      "name": "Ian",
+      "email": "ianmuthiani@email.com",
+      "country": "Uganda",
+      "phone": "0782156731",
+      "location": "Jinja",
+      "system": "Domestic Borehole System",
+      "id": 6
+    },
+    {
+      "name": "Braxton",
+      "email": "bracky@yahoo.com",
+      "country": "Kenya",
+      "phone": "0740192818",
+      "location": "kiambu rd",
+      "system": "Domestic Borehole System",
+      "id": 7
+    },
+    {
+      "name": "JAMES",
+      "email": "jamesopingo@gmail.com",
+      "country": "Seychelles",
+      "phone": "078921738",
+      "location": "seychelles",
+      "system": "Commercial Borehole System",
+      "id": 8
+    },
+    {
+      "name": "Tom Ambetsa",
+      "email": "Ambetsytom@gmail.com",
+      "country": "Kenya",
+      "phone": "+2540737129024",
+      "location": "Thika",
+      "system": "Domestic Borehole System",
+      "systemSize": "700",
+      "flowRate": "450",
+      "diameter": "6",
+      "depth": "821",
+      "installationDate": "2028-04-18",
+      "budget": "950,000",
+      "comments": "SIMPLE",
+      "id": 9
+    }
+  ]
+}

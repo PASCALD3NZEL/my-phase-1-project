@@ -1,0 +1,14 @@
+{
+  "name": "borehole-request-app",
+  "version": "1.0.0",
+  "description": "Simple Borehole Installation Request System",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch db.json --port 3000"
+  },
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}

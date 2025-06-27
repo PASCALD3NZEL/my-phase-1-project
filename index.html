@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borehole Request App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+
+<header>
+    <h1>Borehole Installation Request</h1>
+</header>
+
+<div class="container">
+    <h2>FILL IN THE FORM BELOW</h2>
+    <form id="requestForm">
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email Address" required>
+        
+        <select id="country" required>
+            <option value="">Select Country</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Uganda">Uganda</option>
+            <option value="Tanzania">Tanzania</option>
+            <option value="Rwanda">Rwanda</option>
+            <option value="Burundi">Burundi</option>
+            <option value="South Sudan">South Sudan</option>
+            <option value="Somalia">Somalia</option>
+            <option value="Ethiopia">Ethiopia</option>
+            <option value="Djibouti">Djibouti</option>
+            <option value="Eritrea">Eritrea</option>
+            <option value="Comoros">Comoros</option>
+            <option value="Seychelles">Seychelles</option>
+            <option value="Madagascar">Madagascar</option>
+            <option value="Mozambique">Mozambique</option>
+            <option value="Zambia">Zambia</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+            <option value="Malawi">Malawi</option>
+            <option value="Botswana">Botswana</option>
+            <option value="Namibia">Namibia</option>
+            <option value="South Africa">South Africa</option>
+            <option value="Lesotho">Lesotho</option>
+            <option value="Eswatini">Eswatini</option>
+            <option value="Angola">Angola</option>
+            <option value="Congo">Congo</option>
+            <option value="Gabon">Gabon</option>
+            <option value="Cameroon">Cameroon</option>
+            <option value="Central African Republic">Central African Republic</option>
+            <option value="Chad">Chad</option>
+            <option value="Niger">Niger</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Benin">Benin</option>
+            <option value="Togo">Togo</option>
+            <option value="Ghana">Ghana</option>
+            <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+            <option value="Burkina Faso">Burkina Faso</option>
+            <option value="Mali">Mali</option>
+            <option value="Guinea">Guinea</option>
+            <option value="Sierra Leone">Sierra Leone</option>
+            <option value="Liberia">Liberia</option>
+            <option value="Senegal">Senegal</option>
+            <option value="The Gambia">The Gambia</option>
+            <option value="Guinea-Bissau">Guinea-Bissau</option>
+            <option value="Cape Verde">Cape Verde</option>
+            <option value="Mauritania">Mauritania</option>
+            <option value="Equatorial Guinea">Equatorial Guinea</option>
+            <option value="São Tomé and Príncipe">São Tomé and Príncipe</option>
+        </select>
+        
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+        <textarea id="location" placeholder="Location Details" rows="4" required></textarea>
+
+        <h3>Select System Category</h3>
+
+<div class="category-option">
+    <input type="radio" id="domestic" name="system" value="Domestic Borehole System" required>
+    <label for="domestic">
+        <img src="images/image2.jpeg" alt="Domestic System">
+        Domestic Borehole System
+    </label>
+</div>
+
+<div class="category-option">
+    <input type="radio" id="commercial" name="system" value="Commercial Borehole System">
+    <label for="commercial">
+        <img src="images/image1.webp" alt="Commercial System">
+        Commercial Borehole System
+    </label>
+</div>
+
+<div class="category-option">
+    <input type="radio" id="irrigation" name="system" value="Irrigation Borehole System">
+    <label for="irrigation">
+        <img src="images/image3.jpg" alt="Irrigation System">
+        Irrigation Borehole System
+    </label>
+</div> 
+        <input type="text" id="systemSize" placeholder="Estimated System Size" required>
+<small>(liters/hour)</small>
+
+<input type="text" id="flowRate" placeholder="Estimated Flow Rate" required>
+<small>(liters/minute)</small>
+
+<input type="text" id="diameter" placeholder="Estimated Diameter" required>
+<small>(inches)</small>
+
+<input type="text" id="depth" placeholder="Estimated Depth" required>
+<small>(meters)</small>
+
+<input type="date" id="installationDate" placeholder="Preferred Installation Date" required>
+<small>(YYYY-MM-DD)</small>
+
+<input type="text" id="budget" placeholder="Estimated Budget" required>
+<small id="budget-unit">(USD)</small>
+        <textarea id="comments" placeholder="Additional Comments" rows="4"></textarea>
+        <label for="terms">
+            <input type="checkbox" id="terms" required>
+            I agree to the <a href="https://drillers.com/terms-conditions/">terms and conditions</a>.
+        </label>
+        <label for="privacy">
+            <input type="checkbox" id="privacy" required>
+            I agree to the <a href="https://www.stena-drilling.com/privacy/">privacy policy</a>.
+        </label>
+        <label for="newsletter">
+            <input type="checkbox" id="newsletter">
+            Subscribe to our newsletter for updates.
+            </label>
+
+
+        <button type="submit">Submit Request</button>
+    </form>
+</div>
+
+<div class="success-message" id="successMessage" style="display: none;">
+    <h2>Thank You!</h2>
+    <p>Your request has been successfully submitted. We will contact you shortly.</p>
+    <button id="closeMessage">Close</button>
+
+</div>
+
+<button id="theme-toggle" title="Toggle light/dark mode" style="position: absolute; top: 20px; right: 30px; background: none; border: none; font-size: 2em; cursor: pointer;">
+    ☀️
+</button>
+
+<footer style="margin-top: 40px; padding: 16px 0; background: #00796b; color: #fff; text-align: center; border-radius: 0 0 8px 8px;">
+    &copy; 2025 Borehole Request App. All rights reserved.
+</footer>
+
+</body>
+</html>
