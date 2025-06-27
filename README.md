@@ -63,6 +63,8 @@ Image files should be replaced with real images if necessary
 
 Backend functionality is optional and meant for local development testing only
 
+To access the deployed version of the project click : https://borehole-request-app.onrender.com
+
 Author
 Developed by a student at Moringa School, with approximately 2 months of coding experience, as part of their beginner web development project.
 With recognition of my technical mentor Solomon Kitonyi for the assistance during the project
