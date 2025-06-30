@@ -387,7 +387,7 @@ document.getElementById('country').addEventListener('change', function () {
         const option = document.createElement('option');
         option.value = place;
         locationDatalist.appendChild(option);
-    });
+
 });
 
 // Remove or comment out the OK button click handler
