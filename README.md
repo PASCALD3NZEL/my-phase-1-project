@@ -52,7 +52,7 @@ fill the required details and submit your request
 Upon submission the fields will clear to allow the user fill again with different opinions they have
 When user selects country it helps in changing currency upon the budget field 
 
-Make sure your fetch requests in index.js point to http://localhost:3000/requests.
+Make sure your fetch requests in index.js point to https://borehole-request-app.onrender.com
 
 Notes
 This project is for learning and academic demonstration purposes
