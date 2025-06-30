@@ -61,30 +61,37 @@ document.getElementById('requestForm').addEventListener('submit', (e) => {
             budget,
             comments
         };
-
-    const BASE_URL = "https://borehole-request-app.onrender.com";
+const BASE_URL = "https://borehole-request-app.onrender.com";
 
 fetch(`${BASE_URL}/api/requests`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    name: name,
-    location: location,
-    contact: contact,
-    request: requestDetails
-  })
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        name,
+        email,
+        country,
+        phone,
+        location,
+        system: system.value,
+        systemSize,
+        flowRate,
+        diameter,
+        depth,
+        installationDate,
+        budget,
+        comments
+    })
 })
 .then(res => res.json())
 .then(data => {
-  console.log(data);
-  alert("Request submitted successfully!");
+    console.log(data);
+    alert("Request submitted successfully!");
 })
 .catch(err => {
-  console.error(err);
-  alert("Error submitting request");
+    console.error(err);
+    alert("Error submitting request");
 });
-
-
+   
 // Currency unit update
 document.getElementById('country').addEventListener('change', function() {
     const budgetUnit = document.getElementById('budget-unit');
