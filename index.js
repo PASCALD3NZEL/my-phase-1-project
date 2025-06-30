@@ -62,11 +62,12 @@ document.getElementById('requestForm').addEventListener('submit', (e) => {
             comments
         };
 
-        fetch('http://localhost:3000/requests', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+     fetch("https://borehole-request-app.onrender.com/api/requests", {
+  method: "POST",
+  body: JSON.stringify(data),
+  headers: { "Content-Type": "application/json" }
+});
+
             body: JSON.stringify(requestData)
         })
         .then(res => res.json())
