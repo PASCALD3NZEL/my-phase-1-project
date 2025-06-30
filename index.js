@@ -62,29 +62,28 @@ document.getElementById('requestForm').addEventListener('submit', (e) => {
             comments
         };
 
-     fetch("https://borehole-request-app.onrender.com/api/requests", {
+    const BASE_URL = "https://borehole-request-app.onrender.com";
+
+fetch(`${BASE_URL}/api/requests`, {
   method: "POST",
-  body: JSON.stringify(data),
-  headers: { "Content-Type": "application/json" }
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    name: name,
+    location: location,
+    contact: contact,
+    request: requestDetails
+  })
+})
+.then(res => res.json())
+.then(data => {
+  console.log(data);
+  alert("Request submitted successfully!");
+})
+.catch(err => {
+  console.error(err);
+  alert("Error submitting request");
 });
 
-            body: JSON.stringify(requestData)
-        })
-        .then(res => res.json())
-        .then(data => {
-            statusMsg.textContent = "Your request is being processed. You will receive a response soon.";
-            statusMsg.style.color = "#00796b";
-        })
-        .catch(err => {
-            console.error('Error:', err);
-            statusMsg.textContent = "There was an issue saving your request.";
-            statusMsg.style.color = "red";
-        });
-    } else {
-        statusMsg.textContent = "Please fill in all fields and select a system to proceed.";
-        statusMsg.style.color = "red";
-    }
-});
 
 // Currency unit update
 document.getElementById('country').addEventListener('change', function() {
