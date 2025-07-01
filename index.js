@@ -61,61 +61,31 @@ document.getElementById('requestForm').addEventListener('submit', (e) => {
             budget,
             comments
         };
-const BASE_URL = "https://borehole-request-app.onrender.com";
+        const BASE_URL = "https://borehole-request-app.onrender.com";
 
-<<<<<<< HEAD
-fetch(`${BASE_URL}/api/requests`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-        name,
-        email,
-        country,
-        phone,
-        location,
-        system: system.value,
-        systemSize,
-        flowRate,
-        diameter,
-        depth,
-        installationDate,
-        budget,
-        comments
-    })
-})
-.then(res => res.json())
-.then(data => {
-    console.log(data);
-    alert("Request submitted successfully!");
-})
-.catch(err => {
-    console.error(err);
-    alert("Error submitting request");
-=======
-        fetch('https://borehole-request-app.onrender.com/requests', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+        fetch(`${BASE_URL}/api/requests`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestData)
         })
         .then(res => res.json())
         .then(data => {
-            statusMsg.textContent = "Your request is being processed. You will receive a response soon.";
+            console.log(data);
+            statusMsg.textContent = "Request submitted successfully!";
             statusMsg.style.color = "#00796b";
+            alert("Request submitted successfully!");
         })
         .catch(err => {
-            console.error('Error:', err);
-            statusMsg.textContent = "There was an issue saving your request.";
+            console.error(err);
+            statusMsg.textContent = "Error submitting request";
             statusMsg.style.color = "red";
         });
     } else {
         statusMsg.textContent = "Please fill in all fields and select a system to proceed.";
         statusMsg.style.color = "red";
     }
->>>>>>> b3289b7 (Updated index.js)
-});
-   
+}); // <-- Correct!
+
 // Currency unit update
 document.getElementById('country').addEventListener('change', function() {
     const budgetUnit = document.getElementById('budget-unit');
@@ -332,14 +302,7 @@ const countryCodes = {
     'São Tomé and Príncipe': '+239'
 };
 
-// Update phone placeholder with country code
-document.getElementById('country').addEventListener('change', function () {
-    const phoneInput = document.getElementById('phone');
-    const code = countryCodes[this.value] || '';
-    phoneInput.placeholder = code ? `e.g. ${code}7XXXXXXXX` : 'Phone Number';
-});
-
-// Add this mapping for country to locations
+// Country to locations mapping (remove duplicate 'Malawi')
 const countryLocations = {
     'Kenya': ['Nairobi', 'Mombasa', 'Kisumu', 'Nakuru', 'Eldoret', 'Thika', 'Machakos'],
     'Uganda': ['Kampala', 'Entebbe', 'Gulu', 'Mbarara', 'Jinja'],
@@ -352,11 +315,11 @@ const countryLocations = {
     'Rwanda': ['Kigali', 'Butare', 'Gisenyi', 'Musanze', 'Rwamagana'],
     'Burundi': ['Bujumbura', 'Gitega', 'Ngozi', 'Muyinga', 'Rutana'],
     'Ethiopia': ['Addis Ababa', 'Dire Dawa', 'Mekelle', 'Bahir Dar', 'Gondar'],
-    'Somalia': ['Mogadishu', 'Hargeisa', 'Bosaso    ', 'Kismayo', 'Baidoa'],
+    'Somalia': ['Mogadishu', 'Hargeisa', 'Bosaso', 'Kismayo', 'Baidoa'],
     'Malawi': ['Lilongwe', 'Blantyre', 'Mzuzu', 'Zomba', 'Karonga'],
     'Botswana': ['Gaborone', 'Francistown', 'Molepolole', 'Maun', 'Selibe Phikwe'],
     'Namibia': ['Windhoek', 'Walvis Bay', 'Swakopmund', 'Oshakati', 'Rundu'],
-    'Lesotho': ['Maseru',   'Maputsoe', 'Teyateyaneng', 'Mafeteng', 'Mokhotlong'],
+    'Lesotho': ['Maseru', 'Maputsoe', 'Teyateyaneng', 'Mafeteng', 'Mokhotlong'],
     'Eswatini': ['Mbabane', 'Manzini', 'Lobamba', 'Nhlangano', 'Siteki'],
     'Angola': ['Luanda', 'Benguela', 'Lobito', 'Huambo', 'Lubango'],
     'Congo': ['Kinshasa', 'Lubumbashi', 'Mbuji-Mayi', 'Kananga', 'Kolwezi'],
@@ -374,7 +337,7 @@ const countryLocations = {
     'Liberia': ['Monrovia', 'Gbarnga', 'Buchanan', 'Zwedru', 'Harper'],
     'Senegal': ['Dakar', 'Saint-Louis', 'Thiès', 'Kaolack', 'Ziguinchor'],
     'The Gambia': ['Banjul', 'Serekunda', 'Brikama', 'Bakau', 'Kerewan'],
-    'Guinea-Bissau': ['Bissau', 'Bafatá', 'Gabú', 'Cacheu', 'Bolama '],
+    'Guinea-Bissau': ['Bissau', 'Bafatá', 'Gabú', 'Cacheu', 'Bolama'],
     'Cape Verde': ['Praia', 'Mindelo', 'Santa Maria', 'Assomada', 'Porto Novo'],
     'Mauritania': ['Nouakchott', 'Nouadhibou', 'Rosso', 'Kiffa', 'Atar'],
     'Equatorial Guinea': ['Malabo', 'Bata', 'Ebebiyin', 'Aconibe', 'Evinayong'],
@@ -384,11 +347,7 @@ const countryLocations = {
     'Comoros': ['Moroni', 'Moutsamoudou', 'Moyani', 'Domoni', 'Fomboni'],
     'Seychelles': ['Victoria', 'Anse Royale', 'Beau Vallon', 'Baie Lazare', 'Anse Boileau'],
     'Madagascar': ['Antananarivo', 'Toamasina', 'Antsirabe', 'Fianarantsoa', 'Mahajanga'],
-    'Mozambique': ['Maputo', 'Beira', 'Nampula', 'Chimoio', 'Tete'],
-    'Zambia': ['Lusaka', 'Kitwe', 'Ndola', 'Livingstone', 'Chipata'],
-    'Zimbabwe': ['Harare', 'Bulawayo', 'Mutare', 'Gweru', 'Masvingo'],
-    'Malawi': ['Lilongwe', 'Blantyre', 'Mzuzu', 'Zomba', 'Karonga']
-
+    'Mozambique': ['Maputo', 'Beira', 'Nampula', 'Chimoio', 'Tete']
     // ...add more countries and cities as needed
 };
 
@@ -402,23 +361,84 @@ if (!locationDatalist) {
 
 // Update location input to use datalist
 const locationInput = document.getElementById('location');
-locationInput.setAttribute('list', 'location-list');
+if (locationInput) {
+    locationInput.setAttribute('list', 'location-list');
+}
 
-// Update datalist options on country change
-document.getElementById('country').addEventListener('change', function () {
-    // ...existing code for phone placeholder and budget unit...
+// Combine all 'country' change logic into one event listener
+const countrySelect = document.getElementById('country');
+if (countrySelect) {
+    countrySelect.addEventListener('change', function () {
+        // Update phone placeholder
+        const phoneInput = document.getElementById('phone');
+        const code = countryCodes[this.value] || '';
+        if (phoneInput) {
+            phoneInput.placeholder = code ? `e.g. ${code}7XXXXXXXX` : 'Phone Number';
+        }
 
-    // Location suggestions
-    const locations = countryLocations[this.value] || [];
-    locationDatalist.innerHTML = '';
-    locations.forEach(place => {
-        const option = document.createElement('option');
-        option.value = place;
-        locationDatalist.appendChild(option);
+        // Update budget unit
+        const budgetUnit = document.getElementById('budget-unit');
+        if (budgetUnit) {
+            switch (this.value) {
+                case 'Kenya': budgetUnit.textContent = '(KES)'; break;
+                case 'Uganda': budgetUnit.textContent = '(UGX)'; break;
+                case 'Tanzania': budgetUnit.textContent = '(TZS)'; break;
+                case 'Rwanda': budgetUnit.textContent = '(RWF)'; break;
+                case 'Burundi': budgetUnit.textContent = '(BIF)'; break;
+                case 'South Sudan': budgetUnit.textContent = '(SSP)'; break;
+                case 'Somalia': budgetUnit.textContent = '(SOS)'; break;
+                case 'Ethiopia': budgetUnit.textContent = '(ETB)'; break;
+                case 'Djibouti': budgetUnit.textContent = '(DJF)'; break;
+                case 'Eritrea': budgetUnit.textContent = '(ERN)'; break;
+                case 'Comoros': budgetUnit.textContent = '(KMF)'; break;
+                case 'Seychelles': budgetUnit.textContent = '(SCR)'; break;
+                case 'Madagascar': budgetUnit.textContent = '(MGA)'; break;
+                case 'Mozambique': budgetUnit.textContent = '(MZN)'; break;
+                case 'Zambia': budgetUnit.textContent = '(ZMW)'; break;
+                case 'Zimbabwe': budgetUnit.textContent = '(ZWL)'; break;
+                case 'Malawi': budgetUnit.textContent = '(MWK)'; break;
+                case 'Botswana': budgetUnit.textContent = '(BWP)'; break;
+                case 'Namibia': budgetUnit.textContent = '(NAD)'; break;
+                case 'South Africa': budgetUnit.textContent = '(ZAR)'; break;
+                case 'Lesotho': budgetUnit.textContent = '(LSL)'; break;
+                case 'Eswatini': budgetUnit.textContent = '(SZL)'; break;
+                case 'Angola': budgetUnit.textContent = '(AOA)'; break;
+                case 'Congo': budgetUnit.textContent = '(CDF)'; break;
+                case 'Gabon': budgetUnit.textContent = '(XAF)'; break;
+                case 'Cameroon': budgetUnit.textContent = '(XAF)'; break;
+                case 'Central African Republic': budgetUnit.textContent = '(XAF)'; break;
+                case 'Chad': budgetUnit.textContent = '(XAF)'; break;
+                case 'Niger': budgetUnit.textContent = '(XOF)'; break;
+                case 'Nigeria': budgetUnit.textContent = '(NGN)'; break;
+                case 'Benin': budgetUnit.textContent = '(XOF)'; break;
+                case 'Togo': budgetUnit.textContent = '(XOF)'; break;
+                case 'Ghana': budgetUnit.textContent = '(GHS)'; break;
+                case "Côte d'Ivoire": budgetUnit.textContent = '(XOF)'; break;
+                case 'Burkina Faso': budgetUnit.textContent = '(XOF)'; break;
+                case 'Mali': budgetUnit.textContent = '(XOF)'; break;
+                case 'Guinea': budgetUnit.textContent = '(GNF)'; break;
+                case 'Sierra Leone': budgetUnit.textContent = '(SLL)'; break;
+                case 'Liberia': budgetUnit.textContent = '(LRD)'; break;
+                case 'Senegal': budgetUnit.textContent = '(XOF)'; break;
+                case 'The Gambia': budgetUnit.textContent = '(GMD)'; break;
+                case 'Guinea-Bissau': budgetUnit.textContent = '(XOF)'; break;
+                case 'Cape Verde': budgetUnit.textContent = '(CVE)'; break;
+                case 'Mauritania': budgetUnit.textContent = '(MRU)'; break;
+                case 'Equatorial Guinea': budgetUnit.textContent = '(XAF)'; break;
+                case 'São Tomé and Príncipe': budgetUnit.textContent = '(STN)'; break;
+                default: budgetUnit.textContent = '(USD)';
+            }
+        }
 
-});
-
-// Remove or comment out the OK button click handler
-// document.getElementById('ok-btn').addEventListener('click', () => {
-//     document.getElementById('popup').style.display = "none";
-// });
+        // Update location datalist
+        const locations = countryLocations[this.value] || [];
+        if (locationDatalist) {
+            locationDatalist.innerHTML = '';
+            locations.forEach(place => {
+                const option = document.createElement('option');
+                option.value = place;
+                locationDatalist.appendChild(option);
+            });
+        }
+    });
+}
