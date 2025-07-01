@@ -63,6 +63,7 @@ document.getElementById('requestForm').addEventListener('submit', (e) => {
         };
 const BASE_URL = "https://borehole-request-app.onrender.com";
 
+<<<<<<< HEAD
 fetch(`${BASE_URL}/api/requests`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -90,6 +91,29 @@ fetch(`${BASE_URL}/api/requests`, {
 .catch(err => {
     console.error(err);
     alert("Error submitting request");
+=======
+        fetch('https://borehole-request-app.onrender.com/requests', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(res => res.json())
+        .then(data => {
+            statusMsg.textContent = "Your request is being processed. You will receive a response soon.";
+            statusMsg.style.color = "#00796b";
+        })
+        .catch(err => {
+            console.error('Error:', err);
+            statusMsg.textContent = "There was an issue saving your request.";
+            statusMsg.style.color = "red";
+        });
+    } else {
+        statusMsg.textContent = "Please fill in all fields and select a system to proceed.";
+        statusMsg.style.color = "red";
+    }
+>>>>>>> b3289b7 (Updated index.js)
 });
    
 // Currency unit update
@@ -240,19 +264,23 @@ document.getElementById('country').addEventListener('change', function() {
 });
 
 const themeToggle = document.getElementById('theme-toggle');
-let isLight = false;
-
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light-mode');
-    isLight = !isLight;
-    themeToggle.textContent = isLight ? '🌙' : '☀️';
-});
+if (themeToggle) {
+    let isLight = false;
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        isLight = !isLight;
+        themeToggle.textContent = isLight ? '🌙' : '☀️';
+    });
+}
 
 // Phone number input handling
-document.getElementById('phone').addEventListener('input', function () {
-    // Allow only digits
-    this.value = this.value.replace(/\D/g, '');
-});
+const phoneInput = document.getElementById('phone');
+if (phoneInput) {
+    phoneInput.addEventListener('input', function () {
+        // Allow only digits
+        this.value = this.value.replace(/\D/g, '');
+    });
+}
 
 // Country code mapping
 const countryCodes = {
@@ -352,14 +380,14 @@ const countryLocations = {
     'Equatorial Guinea': ['Malabo', 'Bata', 'Ebebiyin', 'Aconibe', 'Evinayong'],
     'São Tomé and Príncipe': ['São Tomé', 'Principe', 'Santana', 'Trindade', 'Neves'],
     'Djibouti': ['Djibouti', 'Ali Sabieh', 'Tadjourah', 'Obock', 'Dikhil'],
-    'Eritrea': ['Asmara', 'Keren', 'Mass '] ['Assab', 'Mendefera'], 
+    'Eritrea': ['Asmara', 'Keren', 'Massawa', 'Assab', 'Mendefera'],
     'Comoros': ['Moroni', 'Moutsamoudou', 'Moyani', 'Domoni', 'Fomboni'],
     'Seychelles': ['Victoria', 'Anse Royale', 'Beau Vallon', 'Baie Lazare', 'Anse Boileau'],
     'Madagascar': ['Antananarivo', 'Toamasina', 'Antsirabe', 'Fianarantsoa', 'Mahajanga'],
     'Mozambique': ['Maputo', 'Beira', 'Nampula', 'Chimoio', 'Tete'],
     'Zambia': ['Lusaka', 'Kitwe', 'Ndola', 'Livingstone', 'Chipata'],
     'Zimbabwe': ['Harare', 'Bulawayo', 'Mutare', 'Gweru', 'Masvingo'],
-    'Malawi': ['Lilongwe', 'Blant '] 
+    'Malawi': ['Lilongwe', 'Blantyre', 'Mzuzu', 'Zomba', 'Karonga']
 
     // ...add more countries and cities as needed
 };
