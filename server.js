@@ -1,21 +1,21 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+
+app.use(cors());  // Allow requests from anywhere, especially your GitHub Pages
+app.use(express.json());  // Parse JSON bodies
+
 const PORT = process.env.PORT || 3000;
 
-// THIS IS WHERE YOU FIX IT:
-const cors = require('cors');
-app.use(cors({
-    origin: 'https://pascald3nzel.github.io'
-}));
-
-// Handle JSON
-app.use(express.json());
-
-// Your routes
 app.post('/api/requests', (req, res) => {
-    console.log(req.body);
-    res.json({ message: 'Request received successfully!' });
+    console.log(req.body);  // Debug submitted data
+
+    // Respond with valid JSON
+    res.json({ message: "Request received successfully!" });
 });
 
-// Start server
+app.get('/', (req, res) => {
+    res.send('Borehole Request Backend is running!');
+});
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

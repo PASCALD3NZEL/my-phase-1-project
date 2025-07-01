@@ -68,7 +68,10 @@ document.getElementById('requestForm').addEventListener('submit', (e) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestData)
         })
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) throw new Error(`Server Error: ${res.status}`);
+            return res.json();  
+        })
         .then(data => {
             console.log(data);
             statusMsg.textContent = "Request submitted successfully!";
@@ -77,7 +80,7 @@ document.getElementById('requestForm').addEventListener('submit', (e) => {
         })
         .catch(err => {
             console.error(err);
-            statusMsg.textContent = "Error submitting request";
+            statusMsg.textContent = "Error submitting request. " + err.message;
             statusMsg.style.color = "red";
         });
     } else {
