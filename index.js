@@ -61,18 +61,22 @@ document.getElementById('requestForm').addEventListener('submit', (e) => {
             budget,
             comments
         };
-        const BASE_URL = "https://borehole-request-app.onrender.com";
+        const BASE_URL = "http://localhost:3000"; // Replace with your backend port
 
         fetch(`${BASE_URL}/api/requests`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestData)
         })
-        .then(res => {
-            if (!res.ok) throw new Error(`Server Error: ${res.status}`);
-            return res.json();  
-        })
-        .then(data => {
+        .then(async (res) => {
+            const text = await res.text();
+            let data = {};
+            try {
+                data = JSON.parse(text);
+            } catch (e) {
+                console.warn("Response was not valid JSON:", text);
+            }
+            
             console.log(data);
             statusMsg.textContent = "Request submitted successfully!";
             statusMsg.style.color = "#00796b";
@@ -80,7 +84,7 @@ document.getElementById('requestForm').addEventListener('submit', (e) => {
         })
         .catch(err => {
             console.error(err);
-            statusMsg.textContent = "Error submitting request. " + err.message;
+            statusMsg.textContent = "Error submitting request";
             statusMsg.style.color = "red";
         });
     } else {

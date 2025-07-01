@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-app.use(cors());  // Allow requests from anywhere, especially your GitHub Pages
+app.use(cors()); // This enables CORS for all origins
 app.use(express.json());  // Parse JSON bodies
 
 const PORT = process.env.PORT || 3000;
